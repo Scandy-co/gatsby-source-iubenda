@@ -5,7 +5,7 @@ from scandy-web dir
 ```
 npm install -g @babel/cli
 git clone git@github.com:Scandy-co/gatsby-source-iubenda.git ./plugins/gatsby-source-iubenda/
-cd plugin/gatsby-source-iubenda/
+cd plugins/gatsby-source-iubenda/
 npm install
 npx babel src --out-dir .
 cd ../../
