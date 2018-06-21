@@ -1,10 +1,10 @@
-#gatsby-source-iubenda
+# gatsby-source-iubenda
 Source plugin for pulling in Iubenda documents at buildtime for Gatsby.
 
-##Install
+## Install
 ```npm install gatsby-source-iubenda --save```
 
-##How to use
+## How to use
 In your `gatsby-config.js`, add the Iubenda document IDs to option array, where documentId is https://www.iubenda.com/privacy-policy/[DOCUMENT_ID]
 
 ```
