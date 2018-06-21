@@ -1,44 +1,22 @@
-# gatsby-source-iubenda
-gatsby source for iubenda legal docs
+#gatsby-source-iubenda
+Source plugin for pulling in Iubenda documents at buildtime for Gatsby.
 
-from scandy-web dir
-```
-npm install -g @babel/cli
-git clone git@github.com:Scandy-co/gatsby-source-iubenda.git ./plugins/gatsby-source-iubenda/
-cd plugin/gatsby-source-iubenda/
-npm install
-npx babel src --out-dir .
-cd ../../
-```
+##Install
+```npm install gatsby-source-iubenda --save```
 
-add to gatsby-config.js
+##How to use
+In your `gatsby-config.js`, add the Iubenda document IDs to option array, where documentId is https://www.iubenda.com/privacy-policy/[DOCUMENT_ID]
+
 ```
-{
-      resolve: `gatsby-source-iubenda`,
-      options: {
+plugins: [
+  {
+    resolve: `gatsby-source-iubenda`,
+    options: {
         documentIds: [
-          `67915116`,
-          `21906290`,
-      ]
-  }
-},
-```
-
-`gatsby develop`
-
-open http://localhost:8000/___graphql
-
-```
-{
-  allIubendaDocument {
-    edges{
-      node{
-        id
-        title
-				content
-      }
+          `[DOCUMENT_ID]`,
+          `[DOCUMENT_ID2]`,
+        ]
     }
   }
-}```
-
-create a custom slug in your `gatsby-node.js` file using `_.kebabCase` or whatever... `content` goes into `dangerouslySetInnerHtml`
+]
+```
