@@ -43,30 +43,33 @@ exports.sourceNodes = async ({ actions, createNodeId }, { documentIds }) => {
       const privacyPolicy = await axios.get(
         `https://www.iubenda.com/api/privacy-policy/${id}/no-markup`
       );
-
-      const cookiePolicy = await axios.get(
-        `https://www.iubenda.com/api/privacy-policy/${id}/cookie-policy/no-markup`
-      );
-
       let {
         data: { content: privacyContent }
       } = privacyPolicy;
-
-      let {
-        data: { content: cookieContent }
-      } = cookiePolicy;
-
-      const nodeData = processData({
+      let data = {
         id,
         privacyPolicy: {
           title: getTitle(privacyContent, "h1"),
           content: privacyContent
-        },
-        cookiePolicy: {
+        }
+      };
+      try {
+        const cookiePolicy = await axios.get(
+          `https://www.iubenda.com/api/privacy-policy/${id}/cookie-policy/no-markup`
+        );
+        let {
+          data: { content: cookieContent }
+        } = cookiePolicy;
+
+        data["cookiePolicy"] = {
           title: getTitle(cookieContent, "h2"),
           content: cookieContent
-        }
-      });
+        };
+      } catch (err) {
+        console.log(" no cookie policy. ");
+      }
+
+      const nodeData = processData(data);
       return createNode(nodeData);
     })
   );
