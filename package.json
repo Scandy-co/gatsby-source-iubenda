@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-iubenda",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gatsby source plugin for Iubenda",
   "main": "index.js",
   "scripts": {
